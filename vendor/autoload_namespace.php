@@ -1,0 +1,3 @@
+<?php
+
+/* register autoloader here */
