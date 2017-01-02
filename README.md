@@ -1,6 +1,9 @@
 PHP Practicals
 ==============
 
+PHP practicals by [William Durand](http://github.com/willdurand), adapted by [Kévin
+Gomez](https://github.com/K-Phoen/).
+
 ### IUT
 
 #### Practical Work #1
