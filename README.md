@@ -6,12 +6,12 @@ Gomez](https://github.com/K-Phoen/).
 
 ### IUT
 
-#### Practical Work #1
+#### Practical Work #1 — Week 1
 
 * [Introduction](src/iut/introduction.md)
 * [Practical Work #1](src/iut/1.md)
 
-#### Practical Work #2
+#### Practical Work #2 — Week 1
 
 * [Practical Work #2 - Part 1](src/iut/2-1.md)
 * [Practical Work #2 - Part 2](src/iut/2-2.md)
