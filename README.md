@@ -32,6 +32,8 @@ Gomez](https://github.com/K-Phoen/).
 
 * [Practical Work #6](src/iut/6.md)
 
+### IUT Extended
+
 #### Practical Work #7
 
 * [Practical Work #7](src/iut/7.md)
