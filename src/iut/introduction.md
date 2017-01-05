@@ -57,7 +57,7 @@ Voici quelques commandes de bases :
 * `esc` : passer en mode commande (les commandes commencent par `:`)
 * `:w` : écrit le buffer courant
 * `:q` : ferme le buffer actif (quitte vi)
-* `:wq` : ecrit et ferme le buffer courant
+* `:wq` : écrit et ferme le buffer courant
 * `:tabnew file` : ouvre file dans un nouveau buffer
 * `gt` : passer au buffer suivant
 * `gT` : passer au buffer précédent
@@ -68,7 +68,7 @@ Voici quelques commandes de bases :
 * `p` : coller
 
 Un [guide plus complet](http://www.worldtimzone.com/res/vi.html) est disponible
-mais le mieux reste de faire le tutoriel. Pour cela ,taper `vimtutor` dans un
+mais le mieux reste de faire le tutoriel. Pour cela, taper `vimtutor` dans un
 terminal.
 
 
