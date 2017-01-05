@@ -16,19 +16,19 @@ Gomez](https://github.com/K-Phoen/).
 * [Practical Work #2 - Part 1](src/iut/2-1.md)
 * [Practical Work #2 - Part 2](src/iut/2-2.md)
 
-#### Practical Work #3
+#### Practical Work #3 —  Week 2
 
 * [Practical Work #3](src/iut/3.md)
 
-#### Practical Work #4
+#### Practical Work #4 —  Week 3
 
 * [Practical Work #4](src/iut/4.md)
 
-#### Practical Work #5
+#### Practical Work #5 —  Week 4
 
 * [Practical Work #5](src/iut/5.md)
 
-#### Practical Work #6
+#### Practical Work #6 —  Week 6
 
 * [Practical Work #6](src/iut/6.md)
 
