@@ -40,16 +40,6 @@ Gomez](https://github.com/K-Phoen/).
 
 * [Your TODO List!](src/iut/8.md)
 
-### ISIMA
-
-#### Practical Work #1
-
-* [Practical Work #1](src/isima/1.md)
-
-#### Practical Work #2, #3, and #4
-
-* [Read It Later](src/isima/2.md)
-
 License
 -------
 
