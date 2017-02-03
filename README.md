@@ -1,51 +1,5 @@
-PHP Practicals
-==============
+Usage:
 
-PHP practicals by [William Durand](http://github.com/willdurand), adapted by [Kévin
-Gomez](https://github.com/K-Phoen/).
+    php -S localhost:8080 -t web/
 
-### IUT
-
-#### Practical Work #1 — Week 1
-
-* [Introduction](src/iut/introduction.md)
-* [Practical Work #1](src/iut/1.md)
-
-#### Practical Work #2 — Week 1
-
-* [Practical Work #2 - Part 1](src/iut/2-1.md)
-* [Practical Work #2 - Part 2](src/iut/2-2.md)
-
-#### Practical Work #3 —  Week 2
-
-* [Practical Work #3](src/iut/3.md)
-
-#### Practical Work #4 —  Week 3
-
-* [Practical Work #4](src/iut/4.md)
-
-#### Practical Work #5 —  Week 4
-
-* [Practical Work #5](src/iut/5.md)
-
-#### Practical Work #6 —  Week 6
-
-* [Practical Work #6](src/iut/6.md)
-
-### IUT Extended
-
-#### Practical Work #7
-
-* [Practical Work #7](src/iut/7.md)
-
-#### Practical Work #8, #9, #10, and #11
-
-* [Your TODO List!](src/iut/8.md)
-
-License
--------
-
-[![](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
-](http://creativecommons.org/licenses/by-nc-sa/3.0/)<br />This work is
-licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0
-Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/).
+    php -S localhost:8080 -d error_reporting=-1 -d display_errors=On -t web/
