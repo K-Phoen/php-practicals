@@ -19,42 +19,40 @@ $app->get('/', function (Http\Request $request) use ($app) {
 
 //get all statuses
 $app->get('/statuses', function (Http\Request $request) use ($app,$jsonFinder) {
-	$elements= $jsonFinder->findall();
-	if($elements==null){
+	$statusList= $jsonFinder->findall();
+	/*if($statusList==null){
 		throw new Exception\HttpException(404,"Not found");
-	}
-    return $app->render('allStatuses.php', $elements);
+	}*/
+    return $app->render('allStatuses.php', ['statuses' => $statusList]);
 });
 
 // get a status
 $app->get('/statuses/(\d+)', function (Http\Request $request, $id) use ($app,$jsonFinder) {
-	$element= $jsonFinder->findOneById($id);
-	if($element==null){                
+	$status= $jsonFinder->findOneById($id);
+	if($status==null){                
 		throw new Exception\HttpException(404,"Not found");
 	}
-    return $app->render('Status.php', array($element));
+    return $app->render('Status.php', array('status' => $status));
 });
 
 // post a status
 $app->post('/statuses', function (Http\Request $request) use ($app,$jsonWriter,$jsonFinder) {
-	echo 'post called! <br/>';
-	$jsonWriter->postOneComment($request);
-	$elements= $jsonFinder->findall();
-	if($elements==null){
-		throw new Exception\HttpException(404,"Not found");
+	$created=$jsonWriter->write($request);
+	if(!$created){
+		throw new Exception\HttpException(500,"Internal Server Error");
 	}
-    return $app->render('allStatuses.php', $elements);
+    $app->redirect('/statuses');
 });
 
-/*
+
 //delete
-$app->delete('/satuses/(\d+)', function () use ($app) {
-	$elements= $imf->findAll();
-	if($elements==null){
-		throw new Exception\HttpException(404,"Not found");
+$app->delete('/satuses/(\d+)', function ($id) use ($app,$jsonWriter) {
+	$deleted= $JsonWriter->delete($id);
+	if(!$deleted){
+		throw new Exception\HttpException(500,"Internal Server Error");
 	}
-    return $app->render('allStatuses.php', $elements);
-});*/
+	$app->redirect('/statuses');
+});
 
 
 

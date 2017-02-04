@@ -31,7 +31,7 @@ class JsonFinder implements FinderInterface
      * @return null|mixed
      */
     public function findOneById($id){
-		return $this->statuses[$id];
+		return array_key_exists($id,$this->statuses)? $this->statuses[$id] : null;
 	}
 	
 }

@@ -1,7 +1,12 @@
 <h1>Status</h1>
 
 <?php
-	echo '<p>'.$parameters[0]['user'].' à dit le '.$parameters[0]['date'].'</p>';
-	echo '<p>'.$parameters[0]['message'].'</p>';
+	var_dump($parameters);
+	echo '<p>'.$status['user'].' à dit le '.$status['date'].'</p>';
+	echo '<p>'.$status['message'].'</p>';
+	echo '<form action="/statuses/'.$status['id'].'" method="POST">
+			<input type="hidden" name="_method" value="DELETE">
+			<input type="submit" value="Delete">
+		  </form>';
 	echo '<a href="/statuses">retour</a>';
 ?>

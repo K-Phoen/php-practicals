@@ -5,6 +5,6 @@ namespace Model;
 
 interface WriterInterface
 {
-	public function postOneComment(\Http\Request $request);
+	public function write(\Http\Request $request);
 	
 }

@@ -2,11 +2,11 @@
 
 <?php
 echo('<table border="1"><tr><th>user</th><th>Title</th><th>Date</th><th>See</th></tr>');
-foreach($parameters as $key => $value){
+foreach($statuses as $key => $status){
 	echo '<tr>';
-	echo '<td>'.$value['user'].'</td>';
-	echo '<td>'.$value['message'].'</td> ';
-	echo '<td>'.$value['date'].'</td> ';
+	echo '<td>'.$status['user'].'</td>';
+	echo '<td>'.$status['message'].'</td> ';
+	echo '<td>'.$status['date'].'</td> ';
 	echo '<td><a href="/statuses/'.$key.'">See</a></td>';
 	echo '</tr>';
 
