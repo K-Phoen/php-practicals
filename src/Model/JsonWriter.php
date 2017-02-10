@@ -2,7 +2,6 @@
 
 namespace Model;
 
-
 class JsonWriter implements WriterInterface
 {
 	
@@ -13,29 +12,28 @@ class JsonWriter implements WriterInterface
 		$data=array(
 		'id'     => $id = time(),
 		'user'   => $request->getParameter('username'),
+		'title'   => $request->getParameter('title'),
 		'message'=> $request->getParameter('message'),
 		'date'   => date("d.m.y")
 		);
 		$jsonContent[$id] = $data;
 		
 		$created=file_put_contents(__DIR__ ."/../../data/statuses.json",json_encode($jsonContent));
-		if($created){
-			return $created;
-		}
 		return $created;
 		
 	}
 	
 	public function delete ($id){
+		echo 'deleting content';
 		$StringContent= file_get_contents(__DIR__ ."/../../data/statuses.json");
 		$jsonContent= json_decode($StringContent,true);
 		unset($jsonContent[$id]);
 		file_put_contents(__DIR__ ."/../../data/statuses.json",json_encode($jsonContent));
-		return isDeleted(id);
+		return $this->isDeleted($id);
 	}
 	
 	private function isDeleted($id){
-		$jsonFinder= new Model\JsonFinder();
+		$jsonFinder= new JsonFinder();
 		$status = $jsonFinder->findOneById($id);
 		if($status==null){
 			return true;

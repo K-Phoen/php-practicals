@@ -1,10 +1,11 @@
-<h1>Status</h1>
+
 
 <?php
-	var_dump($parameters);
-	echo '<p>'.$status['user'].' à dit le '.$status['date'].'</p>';
-	echo '<p>'.$status['message'].'</p>';
-	echo '<form action="/statuses/'.$status['id'].'" method="POST">
+	echo '<h1>'.$status['title'].'</h1>
+		  <p>Posté par '.$status['user'].' le '.$status['date'].'</p>
+		  <p>'.$status['message'].'</p>
+		  <br />
+		  <form action="/statuses/'.$status['id'].'" method="POST">
 			<input type="hidden" name="_method" value="DELETE">
 			<input type="submit" value="Delete">
 		  </form>';

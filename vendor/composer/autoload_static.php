@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInite1a29612bef548ae1a581107dbdecac8
 {
+    public static $prefixLengthsPsr4 = array (
+        'N' => 
+        array (
+            'Negotiation\\' => 12,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Negotiation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+        ),
+    );
+
     public static $fallbackDirsPsr4 = array (
         0 => __DIR__ . '/../..' . '/src',
     );
@@ -13,6 +27,8 @@ class ComposerStaticInite1a29612bef548ae1a581107dbdecac8
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInite1a29612bef548ae1a581107dbdecac8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite1a29612bef548ae1a581107dbdecac8::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInite1a29612bef548ae1a581107dbdecac8::$fallbackDirsPsr4;
 
         }, null, ClassLoader::class);

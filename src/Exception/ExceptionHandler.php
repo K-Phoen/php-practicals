@@ -24,6 +24,8 @@ class ExceptionHandler
 
     /**
      * @param Exception $exception
+     * 
+     * IUT is still in php 5, code not changed for that 
      */
     public function handle(\Exception $exception)
     {

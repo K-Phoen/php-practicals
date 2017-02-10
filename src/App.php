@@ -86,7 +86,6 @@ class App
     public function delete($pattern, $callable)
     {
         $this->registerRoute(Request::DELETE, $pattern, $callable);
-
         return $this;
     }
 
@@ -106,7 +105,7 @@ class App
 
     // Something is missing here...
 
-    public function run(Request $request = null)
+    public function run(Http\Request $request = null)
     {
 		if ($request === null) {
 			$request = Request::createFromGlobals();
@@ -116,9 +115,12 @@ class App
 		$uri = $request->getUri();
 		
         foreach ($this->routes as $route) {
+			
             if ($route->match($method, $uri)) {
+				
                 return $this->process($route,$request);
             }
+            
         }
         
         throw new HttpException(404, 'Page Not Found');
@@ -127,13 +129,21 @@ class App
     /**
      * @param Route $route
      */
-    private function process(Route $route, Request $request)
+    private function process(Route $route, Http\Request $request, Http\Response $response = null)
     {
         try {
+
 			$arguments = $route->getArguments();
+			array_unshift($arguments, $response);
 			array_unshift($arguments, $request);
-            http_response_code($this->statusCode);
-            echo call_user_func_array($route->getCallable(), $arguments);
+			if($response == null){
+				http_response_code($this->statusCode);
+				echo call_user_func_array($route->getCallable(), $arguments);
+			}
+			else{
+				$response.send();
+			}
+
         } catch (HttpException $e) {
             throw $e;
         } catch (\Exception $e) {

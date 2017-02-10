@@ -43,7 +43,7 @@ class Route
      *
      * @return boolean
      */
-    public function match($method, $uri)
+    public function match($method, $uri = null)
     {
         if ($method !== $this->method) {
             return false;

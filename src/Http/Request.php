@@ -7,6 +7,7 @@ class Request
 	private $method;
 	private $uri;
 	private $parameters;
+	private $requestAccept;
 	
 	const GET    = 'GET';
     const POST   = 'POST';
@@ -15,11 +16,18 @@ class Request
     
     
     public static function createFromGlobals(){
+		
+		if((isset($_SERVER['CONTENT_TYPE']))||(isset($_SERVER['HTTP_CONTENT_TYPE']))){
+			if(($_SERVER['HTTP_CONTENT_TYPE'] === 'application/json')||($_SERVER['CONTENT_TYPE']==='application/json')){
+					$_JSONPOST=array();
+					$_JSONPOST= json_decode(file_get_contents('php://input'), true);
+					return new self($_GET,$_JSONPOST);	
+			}
+		}
 		return new self($_GET,$_POST);
 	}
 	
-	function __construct(array $query = array(), array $request = array()){
-		
+	function __construct($query = array(), $request = array()){
 		//setting method
 		$this->method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : self::GET;
 		//setting uri
@@ -30,6 +38,8 @@ class Request
 		$this->uri= $uri;
 		//setting parameters
 		$this->parameters= array_merge($query,$request);
+		//guessing best format to return
+		$this->guessBestFormat($_SERVER['HTTP_ACCEPT']);
 	
 	}
 	/**
@@ -46,6 +56,8 @@ class Request
 	
 	/**
 	 * Get the request uri
+	 * 
+	 * @return the request uri
 	 * */
 	function getUri(){
 		return $this->uri;
@@ -63,6 +75,34 @@ class Request
 		else{
 			return $default;
 		}
+	}
+	
+	/**
+	 * guess the best format to return, if no formats match, then return a plain/text document
+	 * 
+	 * */
+	function guessBestFormat($accept = null ){
+		$negotiator = new \Negotiation\Negotiator();
+		$priorities   = array('text/html; charset=UTF-8', 'application/json');
+		$mediaType = $negotiator->getBest($accept, $priorities);
+		if($mediaType==null){
+			//used after to throw an error
+			$this->requestAccept=null;
+		}
+		else{
+			$bestFormat = $mediaType->getValue();
+			$this->requestAccept=$bestFormat;
+		}
+		
+	}
+	
+	/**
+	 * Get the request uri
+	 * 
+	 * @return the request uri
+	 * */
+	function getRequestAccept(){
+		return $this->requestAccept;
 	}
 		
 	

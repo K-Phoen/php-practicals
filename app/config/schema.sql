@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS statuses;
+
+CREATE TABLE statuses
+(
+    id INT PRIMARY KEY NOT NULL,
+    user VARCHAR(100)NOT NULL,
+    title VARCHAR(100)NOT NULL,
+    message VARCHAR(255)NOT NULL,
+    date DATETIME
+);
