@@ -8,7 +8,7 @@ echo '<table border="1">
 			<th>Date</th>
 			<th>See</th>
 		  </tr>';
-foreach($statuses as $key => $status){
+foreach($parameters as $key => $status){
 	echo '<tr>
 			<td>'.$status['user'].'</td>
 			<td>'.$status['title'].'</td> 

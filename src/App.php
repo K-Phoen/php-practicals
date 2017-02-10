@@ -102,9 +102,11 @@ class App
         return $this;
     }
     
-
-    // Something is missing here...
-
+	/**
+	 * @param Request $request
+	 * 
+	 * @return callable $callable
+	 */
     public function run(Http\Request $request = null)
     {
 		if ($request === null) {

@@ -8,12 +8,14 @@ class Connexion extends \PDO
   
          
             try {
-			parent::__construct( $connexion,$username,$password,$options);
-            } catch(exception $e) {
+				parent::__construct( $connexion,$username,$password,$options);
+            } 
+            catch(exception $e) {
                 echo $e->getMessage();
             }
          
-        }
+    }
+    
 	public function executeQuery($query,array $parameters =[])
 	{
 			$stmt = $this->prepare($query);

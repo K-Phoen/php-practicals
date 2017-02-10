@@ -24,7 +24,6 @@ class JsonWriter implements WriterInterface
 	}
 	
 	public function delete ($id){
-		echo 'deleting content';
 		$StringContent= file_get_contents(__DIR__ ."/../../data/statuses.json");
 		$jsonContent= json_decode($StringContent,true);
 		unset($jsonContent[$id]);

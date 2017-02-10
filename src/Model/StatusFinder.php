@@ -10,23 +10,41 @@ class StatusFinder implements FinderInterface
     {
         $this->con = $con;
     }
-	
+    
+    /*
+     * Find all statuses in db
+     * 
+     * @return array  ->   statuses in array
+     */
     public function findAll(){
 		$stmt = $this->con->prepare('SELECT * FROM statuses;');
 		$stmt->execute();
-		return $stmt->fetchAll();
+		$result = $stmt->fetchAll();
+		$statuses=array();
+		forEach($result as $key => $row){
+			$status= new Status($row['user'],$row['title'],$row['message'],$row['date'],$row['id']);
+			array_push($statuses,$status);
+		}
+		return $statuses;
 	}
 
     /**
      * Retrieve an element by its id.
      *
      * @param  mixed      $id
-     * @return null|mixed
+     * @return object     $status
      */
     public function findOneById($id){
 		$stmt = $this->con->prepare('SELECT * FROM statuses WHERE id= :id;');
-		$stmt->execute([':id'=>$id]);
-		return $stmt->fetch();
+		if($stmt->execute([':id'=>$id])){
+			$queryResult= $stmt->fetch();
+			var_dump($queryResult);
+			$status= new Status($queryResult['user'],$queryResult['title'],$queryResult['message'],$queryResult['date'],$queryResult['id']);
+		}
+		else{
+			throw new Exception\
+		}
+		return $status;
 	}
 	
 }

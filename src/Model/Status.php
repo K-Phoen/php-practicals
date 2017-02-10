@@ -10,17 +10,22 @@ class Status
 	private $message;
 	private $date;
 	
-	public function __construct($user,$title,$message,$id= null)
+	public function __construct($user,$title,$message,$date=null, $id= null)
     {
 		$this->id =$id;
         $this->user=$user;
         $this->title=$title;
         $this->message=$message;
-        $this->date= date("YYY-mm-dd HH:ii:ss");
+        if($date==null){
+			$this->date= date("YYY-mm-dd HH:ii:ss",time());
+		}
+		else{
+			 $this->date=$date;
+		}
     }
 	
-	public function isNew(){
-		return $this->id === null;
+	public function getId(){
+		return $this->id;
 	}
 	
 	public function getUser(){
@@ -37,6 +42,20 @@ class Status
 	
 	public function getDate(){
 		return $this->date;
+	}
+	
+	public function setId($id){
+		$this->id= $id;
+	}
+	
+	public function toArray(){
+		return array(
+		'id' => $this->id,
+		'user' => $this->user,
+		'title' => $this->title,
+		'message' => $this->message,
+		'date' => $this->date
+		);
 	}
 	
 }

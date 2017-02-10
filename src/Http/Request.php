@@ -86,7 +86,6 @@ class Request
 		$priorities   = array('text/html; charset=UTF-8', 'application/json');
 		$mediaType = $negotiator->getBest($accept, $priorities);
 		if($mediaType==null){
-			//used after to throw an error
 			$this->requestAccept=null;
 		}
 		else{
