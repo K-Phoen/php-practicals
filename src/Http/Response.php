@@ -4,7 +4,6 @@ namespace Http;
 
 class Response
 {
-	
     private $content;
 
     private $statusCode;
@@ -43,7 +42,4 @@ class Response
 
         echo $this->content;
     }
-		
-	
-		
 }

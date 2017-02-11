@@ -39,7 +39,8 @@ class AppTest extends TestCase
     {
         $this->assertCount(0, $this->readRoutes($this->app));
 
-        $this->app->get('/foo', function () {});
+        $this->app->get('/foo', function () {
+        });
         $routes = $this->readRoutes($this->app);
 
         $this->assertCount(1, $routes);
@@ -51,7 +52,8 @@ class AppTest extends TestCase
     {
         $this->assertCount(0, $this->readRoutes($this->app));
 
-        $this->app->post('/foo', function () {});
+        $this->app->post('/foo', function () {
+        });
         $routes = $this->readRoutes($this->app);
 
         $this->assertCount(1, $routes);
@@ -63,7 +65,8 @@ class AppTest extends TestCase
     {
         $this->assertCount(0, $this->readRoutes($this->app));
 
-        $this->app->put('/foo', function () {});
+        $this->app->put('/foo', function () {
+        });
         $routes = $this->readRoutes($this->app);
 
         $this->assertCount(1, $routes);
@@ -75,7 +78,8 @@ class AppTest extends TestCase
     {
         $this->assertCount(0, $this->readRoutes($this->app));
 
-        $this->app->delete('/foo', function () {});
+        $this->app->delete('/foo', function () {
+        });
         $routes = $this->readRoutes($this->app);
 
         $this->assertCount(1, $routes);

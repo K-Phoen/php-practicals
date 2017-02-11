@@ -9,7 +9,8 @@ class RouteTest extends \TestCase
      */
     public function testMatch($method, $pattern, $givenMethod, $givenUri, $expectedReturn, $expectedArguments = array())
     {
-        $route = new Route($method, $pattern, function () {});
+        $route = new Route($method, $pattern, function () {
+        });
 
         $this->assertEquals($expectedReturn, $route->match($givenMethod, $givenUri));
         $this->assertCount(count($expectedArguments), $route->getArguments());
