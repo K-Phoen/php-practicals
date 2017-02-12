@@ -44,10 +44,22 @@ $app->get('/', function (\Http\Request $request, \Http\Response $response = null
 
 //get all statuses
 $app->get('/statuses', function (\Http\Request $request, \Http\Response $response = null) use ($app, $statusFinder) {
+
+  //TODO faire une methode pour ça
+    $orderBy= $request->getParameter("orderBy");
+    if ($orderBy==null) {
+        $criteria=null;
+    } else {
+        $numberOfresults= $request->getParameter("numberOfResults");
+        $criteria= array(
+        'orderBy' => str_replace('+', ' ', $orderBy),
+        'limit' => $numberOfresults
+      );
+    }
     //if requestAccept is HTML
     if ($request->getRequestAccept() == 'text/html; charset=UTF-8') {
         $statusList=array();
-        $statusList= $statusFinder->findAll();
+        $statusList= $statusFinder->findAll($criteria);
         $statusArray=array();
         foreach ($statusList as $row) {
             $status= $row->toArray();
@@ -57,7 +69,7 @@ $app->get('/statuses', function (\Http\Request $request, \Http\Response $respons
     }
     //if requestAccept is JSON
     elseif ($request->getRequestAccept() == 'application/json') {
-        $response= new Http\JSONResponse(json_encode($statusFinder->findAll()), 200);
+        $response= new Http\JSONResponse(json_encode($statusFinder->findAll($criteria)), 200);
         return $response->getContent();
     }
     //if requestAccept is null
@@ -110,12 +122,8 @@ $app->post('/statuses', function (\Http\Request $request) use ($app, $statusMapp
 
 
 //delete
-$app->delete('/statuses/(\d+)', function (\Http\Request $request, $id) use ($app, $statusMapper, $statusFinder) {
+$app->delete('/statuses/(\d+)', function (\Http\Request $request, \Http\Response $response = null, $id) use ($app, $statusMapper, $statusFinder) {
     $status= $statusFinder->findOneById($id);
-    var_dump($status);
-    if ($status==null) {
-        throw new Exception\HttpException(404, "Not found");
-    }
     $deleted= $statusMapper->remove($status);
     if (!$deleted) {
         throw new Exception\HttpException(500, "Internal server error");

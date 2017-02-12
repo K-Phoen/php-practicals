@@ -9,7 +9,7 @@ class Status
     private $title;
     private $message;
     private $date;
-    
+
     public function __construct($user, $title, $message, $date=null, $id= null)
     {
         $this->id =$id;
@@ -17,42 +17,43 @@ class Status
         $this->title=$title;
         $this->message=$message;
         if ($date==null) {
-            $this->date= date("YYY-mm-dd HH:ii:ss", time());
+            date_default_timezone_set('Europe/Paris');
+            $this->date= date("Y-m-d H:i:s");
         } else {
             $this->date=$date;
         }
     }
-    
+
     public function getId()
     {
         return $this->id;
     }
-    
+
     public function getUser()
     {
         return $this->user;
     }
-    
+
     public function getTitle()
     {
         return $this->title;
     }
-    
+
     public function getMessage()
     {
         return $this->message;
     }
-    
+
     public function getDate()
     {
         return $this->date;
     }
-    
+
     public function setId($id)
     {
         $this->id= $id;
     }
-    
+
     public function toArray()
     {
         return array(

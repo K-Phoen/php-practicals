@@ -101,7 +101,7 @@ class App
 
         return $this;
     }
-    
+
     /**
      * @param Request $request
      *
@@ -115,13 +115,13 @@ class App
 
         $method = $request->getMethod();
         $uri = $request->getUri();
-        
+
         foreach ($this->routes as $route) {
             if ($route->match($method, $uri)) {
                 return $this->process($route, $request);
             }
         }
-        
+
         throw new HttpException(404, 'Page Not Found');
     }
 
@@ -156,7 +156,7 @@ class App
     {
         $this->routes[]= new Route($method, $pattern, $callable);
     }
-    
+
     public function redirect($to, $statusCode = 302)
     {
         http_response_code($statusCode);
