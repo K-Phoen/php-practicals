@@ -40,7 +40,7 @@ Gomez](https://github.com/K-Phoen/).
 
 #### Practical Work #8, #9, #10, and #11
 
-* Coming Soon
+* [Practical Work #8](src/iut/8.md)
 
 License
 -------
