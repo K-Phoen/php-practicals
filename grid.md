@@ -10,6 +10,7 @@
 | État de fonctionnement  | …/2   | Ça marche ?                      |
 | Respect de PSR 1 & 2    | …/2   | Fonction du nombre de violations |
 | Sentiment général       | …/5   | Qualité générale du code         |
+| Style & Design          | …/2   | Visuel du site                   |
 | Tests                   | …/6   | Ttests ? De différents type ? Qui passent ? |
 | Fonctionnalités "bonus" | …/?   | En fonction                      |
 
